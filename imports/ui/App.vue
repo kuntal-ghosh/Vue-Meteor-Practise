@@ -2,8 +2,9 @@
   <div className="container">
     <Navbar/>
     
-    <main class="container mt-5">
-      <User/>
+    <main class="container">
+      <!-- <User/> -->
+      <router-view></router-view>
 
     </main>
     
@@ -45,4 +46,8 @@ export default {
   margin: 0;
   padding: 0;
 }
+main{
+  margin-top: 80px;
+}
+
 </style>
