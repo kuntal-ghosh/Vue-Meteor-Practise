@@ -3,7 +3,7 @@
   <b-navbar toggleable="lg" type="dark" variant="dark" fixed="top">
     
     <b-navbar-brand href="#">
-    <router-link :to="{ name: 'home' }" exact >YooLibrary</router-link>
+    <router-link :to="{ name: 'home' }" exact >YooSchool</router-link>
 
       </b-navbar-brand>
 

@@ -1,6 +1,6 @@
 <template>
     <div style="text-align: center;">
-        <h1>Welcome to YooLibrary</h1>
+        <h1>Welcome to YooSchool</h1>
         
     </div>
 </template>
