@@ -14,7 +14,7 @@
 
  <b-form-group
         id="input-group-1"
-        label="Email address:"
+        label="Email Address:"
         label-for="input-1"
         description="We'll never share your email with anyone else."
       >
@@ -39,7 +39,7 @@
       </b-form-group>
 
     <div class="mb-4">
-    <label for="example-datepicker">Choose a date</label>
+    <label for="example-datepicker">Date of Birth</label>
     <b-form-datepicker id="example-datepicker" v-model="form.date" class="mb-2"></b-form-datepicker>
   </div>
 
@@ -62,13 +62,16 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
-    <b-card class="mt-3" header="Form Data Result">
+    <!-- <b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
-    </b-card>
+    </b-card> -->
   </div>
 </template>
 
 <script>
+import { Meteor } from 'meteor/meteor';
+import {Students} from "../api/students";
+
   export default {
       name:"User",
     data() {
@@ -78,8 +81,9 @@
           name: '',
           phone:'',
           date: '',
-          food: null,
-          checked: []
+          subjects: [],
+          // food: null,
+          // checked: []
         },
         foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
         show: true
@@ -88,13 +92,22 @@
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        alert(JSON.stringify(this.form))
+        // if(this.form.subjects.lenght==0)
+        // { 
+        //   console.log("nil");
+        //   this.form.subjects ="Nil";
+        // }
+      Meteor.call("students.insert", this.form);
+      this.onReset(evt);
+
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
         this.form.email = ''
         this.form.name = ''
+           this.form.phone = '';
+        this.form.date = '';
         this.form.food = null
         this.form.checked = []
         // Trick to reset/clear native browser form validation state
