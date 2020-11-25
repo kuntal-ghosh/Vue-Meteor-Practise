@@ -62,8 +62,13 @@ import "../../api/subjects.js"
     methods: {
       onSubmit(evt) {
         evt.preventDefault()
-              Meteor.call("subjects.insert", this.form);
+        try {
+         Meteor.call("subjects.insert", this.form);
 
+        } catch (error) {
+            console.log("error")
+            console.log(error.messages);
+        }
       this.onReset(evt);
 
       },
